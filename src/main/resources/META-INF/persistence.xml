@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="ogm-jpa-tutorial"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+		<class>br.com.nosql.example.hibernateogm.model.Cidade</class>
+		<class>br.com.nosql.example.hibernateogm.model.Cliente</class> 
+		<class>br.com.nosql.example.hibernateogm.model.Historico</class>
+		<properties>
+			<property name="hibernate.search.Rules.directory_provider"
+				value="ram" />
+			<property name="hibernate.ogm.datastore.provider"
+				value="org.hibernate.ogm.datastore.mongodb.impl.MongoDBDatastoreProvider" />
+			<property name="hibernate.ogm.datastore.database" value="hibernateOGM" />
+			<!-- <property name="hibernate.ogm.mongodb.associations.store"
+				value="GLOBAL_COLLECTION" /> -->
+			<property name="hibernate.ogm.datastore.create_database"
+				value="true" />
+			<property name="hibernate.ogm.mongodb.username" value="admin" />
+			<property name="hibernate.ogm.mongodb.password " value="admin" />
+			<property name="hibernate.ogm.mongodb.host" value="localhost" />
+			<property name="hibernate.ogm.mongodb.port" value="27017" />
+			<!-- Configurar a Localização dos indices para as consultas usadas pelo 
+				Hibernate Search -->
+			<property name="hibernate.search.default.directory_provider"
+				value="filesystem" />
+			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes" />
+		</properties>
+	</persistence-unit>
+</persistence>
